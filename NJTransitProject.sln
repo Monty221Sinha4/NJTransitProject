@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJTransitProject", "NJTransitProject\NJTransitProject.csproj", "{A13C551B-8D5A-4522-B2E2-89EB28250694}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A13C551B-8D5A-4522-B2E2-89EB28250694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A13C551B-8D5A-4522-B2E2-89EB28250694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A13C551B-8D5A-4522-B2E2-89EB28250694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A13C551B-8D5A-4522-B2E2-89EB28250694}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {915767A5-58AB-4760-8A2D-55EA0C8F4A5B}
+	EndGlobalSection
+EndGlobal

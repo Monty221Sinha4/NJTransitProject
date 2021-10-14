@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NJTransitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StationPlatforms">
+          <Key>
+            <PropertyRef Name="PlatformID" />
+          </Key>
+          <Property Name="PlatformID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Platform" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stations">
+          <Key>
+            <PropertyRef Name="StationID" />
+          </Key>
+          <Property Name="StationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Station" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainTimeTable">
+          <Key>
+            <PropertyRef Name="GenID" />
+          </Key>
+          <Property Name="GenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StationID" Type="int" Nullable="false" />
+          <Property Name="SchuduleTime" Type="datetime" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="PlatformID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TrainTimeTable_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="TrainTimeTable" Type="Self.TrainTimeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="TrainTimeTable">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainTimeTable_StationPlatforms">
+          <End Role="StationPlatforms" Type="Self.StationPlatforms" Multiplicity="1" />
+          <End Role="TrainTimeTable" Type="Self.TrainTimeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StationPlatforms">
+              <PropertyRef Name="PlatformID" />
+            </Principal>
+            <Dependent Role="TrainTimeTable">
+              <PropertyRef Name="PlatformID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainTimeTable_Stations">
+          <End Role="Stations" Type="Self.Stations" Multiplicity="1" />
+          <End Role="TrainTimeTable" Type="Self.TrainTimeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stations">
+              <PropertyRef Name="StationID" />
+            </Principal>
+            <Dependent Role="TrainTimeTable">
+              <PropertyRef Name="StationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainTimeTable_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="TrainTimeTable" Type="Self.TrainTimeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="TrainTimeTable">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NJTransitModelStoreContainer">
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StationPlatforms" EntityType="Self.StationPlatforms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stations" EntityType="Self.Stations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainTimeTable" EntityType="Self.TrainTimeTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TrainTimeTable_Cities" Association="Self.FK_TrainTimeTable_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="TrainTimeTable" EntitySet="TrainTimeTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainTimeTable_StationPlatforms" Association="Self.FK_TrainTimeTable_StationPlatforms">
+            <End Role="StationPlatforms" EntitySet="StationPlatforms" />
+            <End Role="TrainTimeTable" EntitySet="TrainTimeTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainTimeTable_Stations" Association="Self.FK_TrainTimeTable_Stations">
+            <End Role="Stations" EntitySet="Stations" />
+            <End Role="TrainTimeTable" EntitySet="TrainTimeTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainTimeTable_Status" Association="Self.FK_TrainTimeTable_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="TrainTimeTable" EntitySet="TrainTimeTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NJTransitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TrainTimeTables" Relationship="Self.FK_TrainTimeTable_Cities" FromRole="Cities" ToRole="TrainTimeTable" />
+        </EntityType>
+        <EntityType Name="StationPlatform">
+          <Key>
+            <PropertyRef Name="PlatformID" />
+          </Key>
+          <Property Name="PlatformID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Platform" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TrainTimeTables" Relationship="Self.FK_TrainTimeTable_StationPlatforms" FromRole="StationPlatforms" ToRole="TrainTimeTable" />
+        </EntityType>
+        <EntityType Name="Stations">
+          <Key>
+            <PropertyRef Name="StationID" />
+          </Key>
+          <Property Name="StationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TrainTimeTables" Relationship="Self.FK_TrainTimeTable_Stations" FromRole="Stations" ToRole="TrainTimeTable" />
+        </EntityType>
+        <EntityType Name="StatusTable">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TrainTimeTables" Relationship="Self.FK_TrainTimeTable_Status" FromRole="Status" ToRole="TrainTimeTable" />
+        </EntityType>
+        <EntityType Name="TrainTimeTable">
+          <Key>
+            <PropertyRef Name="GenID" />
+          </Key>
+          <Property Name="GenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StationID" Type="Int32" Nullable="false" />
+          <Property Name="SchuduleTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="PlatformID" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK_TrainTimeTable_Cities" FromRole="TrainTimeTable" ToRole="Cities" />
+          <NavigationProperty Name="StationPlatform" Relationship="Self.FK_TrainTimeTable_StationPlatforms" FromRole="TrainTimeTable" ToRole="StationPlatforms" />
+          <NavigationProperty Name="Station" Relationship="Self.FK_TrainTimeTable_Stations" FromRole="TrainTimeTable" ToRole="Stations" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_TrainTimeTable_Status" FromRole="TrainTimeTable" ToRole="Status" />
+        </EntityType>
+        <Association Name="FK_TrainTimeTable_Cities">
+          <End Role="Cities" Type="NJTransitModel.Cities" Multiplicity="1" />
+          <End Role="TrainTimeTable" Type="Self.TrainTimeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="TrainTimeTable">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainTimeTable_StationPlatforms">
+          <End Role="StationPlatforms" Type="Self.StationPlatform" Multiplicity="1" />
+          <End Role="TrainTimeTable" Type="Self.TrainTimeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StationPlatforms">
+              <PropertyRef Name="PlatformID" />
+            </Principal>
+            <Dependent Role="TrainTimeTable">
+              <PropertyRef Name="PlatformID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainTimeTable_Stations">
+          <End Role="Stations" Type="NJTransitModel.Stations" Multiplicity="1" />
+          <End Role="TrainTimeTable" Type="Self.TrainTimeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stations">
+              <PropertyRef Name="StationID" />
+            </Principal>
+            <Dependent Role="TrainTimeTable">
+              <PropertyRef Name="StationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainTimeTable_Status">
+          <End Role="Status" Type="NJTransitModel.StatusTable" Multiplicity="1" />
+          <End Role="TrainTimeTable" Type="Self.TrainTimeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="TrainTimeTable">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NJData1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities1" EntityType="NJTransitModel.Cities" />
+          <EntitySet Name="StationPlatforms" EntityType="Self.StationPlatform" />
+          <EntitySet Name="Stations1" EntityType="NJTransitModel.Stations" />
+          <EntitySet Name="StatusTables" EntityType="NJTransitModel.StatusTable" />
+          <EntitySet Name="TrainTimeTables" EntityType="Self.TrainTimeTable" />
+          <AssociationSet Name="FK_TrainTimeTable_Cities" Association="Self.FK_TrainTimeTable_Cities">
+            <End Role="Cities" EntitySet="Cities1" />
+            <End Role="TrainTimeTable" EntitySet="TrainTimeTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainTimeTable_StationPlatforms" Association="Self.FK_TrainTimeTable_StationPlatforms">
+            <End Role="StationPlatforms" EntitySet="StationPlatforms" />
+            <End Role="TrainTimeTable" EntitySet="TrainTimeTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainTimeTable_Stations" Association="Self.FK_TrainTimeTable_Stations">
+            <End Role="Stations" EntitySet="Stations1" />
+            <End Role="TrainTimeTable" EntitySet="TrainTimeTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainTimeTable_Status" Association="Self.FK_TrainTimeTable_Status">
+            <End Role="Status" EntitySet="StatusTables" />
+            <End Role="TrainTimeTable" EntitySet="TrainTimeTables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NJTransitModelStoreContainer" CdmEntityContainer="NJData1">
+          <EntitySetMapping Name="Cities1">
+            <EntityTypeMapping TypeName="NJTransitModel.Cities">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StationPlatforms">
+            <EntityTypeMapping TypeName="NJTransitModel.StationPlatform">
+              <MappingFragment StoreEntitySet="StationPlatforms">
+                <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
+                <ScalarProperty Name="Platform" ColumnName="Platform" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stations1">
+            <EntityTypeMapping TypeName="NJTransitModel.Stations">
+              <MappingFragment StoreEntitySet="Stations">
+                <ScalarProperty Name="StationID" ColumnName="StationID" />
+                <ScalarProperty Name="Station" ColumnName="Station" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusTables">
+            <EntityTypeMapping TypeName="NJTransitModel.StatusTable">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainTimeTables">
+            <EntityTypeMapping TypeName="NJTransitModel.TrainTimeTable">
+              <MappingFragment StoreEntitySet="TrainTimeTable">
+                <ScalarProperty Name="GenID" ColumnName="GenID" />
+                <ScalarProperty Name="StationID" ColumnName="StationID" />
+                <ScalarProperty Name="SchuduleTime" ColumnName="SchuduleTime" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,36 @@
+﻿
+﻿﻿body {
+    background-color: ghostwhite;
+    text-align: right;
+    position: absolute;
+}
+
+/* unvisited link */
+a:link {
+    color: blue;
+}
+
+/* visited link */
+a:visited {
+    color: blue;
+}
+
+/* mouse over link */
+a:hover {
+    color: blue;
+}
+
+/* selected link */
+a:active {
+    color: red;
+}
+
+.p1 {
+    font-family: "Arial Nova";
+    color: red;
+}
+
+.p2 {
+    font-family: 'Arial Nova';
+    color: lightblue;
+}
