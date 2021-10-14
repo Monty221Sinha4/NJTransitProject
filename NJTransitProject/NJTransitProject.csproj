@@ -163,6 +163,10 @@
     </Compile>
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StationPlatformsController.cs" />
+    <Compile Include="Controllers\StationsController.cs" />
+    <Compile Include="Controllers\StatusTablesController.cs" />
+    <Compile Include="Controllers\TrainTimeTablesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +240,26 @@
     <Content Include="Views\Cities\Details.cshtml" />
     <Content Include="Views\Cities\Edit.cshtml" />
     <Content Include="Views\Cities\Index.cshtml" />
+    <Content Include="Views\Stations\Create.cshtml" />
+    <Content Include="Views\Stations\Delete.cshtml" />
+    <Content Include="Views\Stations\Details.cshtml" />
+    <Content Include="Views\Stations\Edit.cshtml" />
+    <Content Include="Views\Stations\Index.cshtml" />
+    <Content Include="Views\StatusTables\Create.cshtml" />
+    <Content Include="Views\StatusTables\Delete.cshtml" />
+    <Content Include="Views\StatusTables\Details.cshtml" />
+    <Content Include="Views\StatusTables\Edit.cshtml" />
+    <Content Include="Views\StatusTables\Index.cshtml" />
+    <Content Include="Views\StationPlatforms\Create.cshtml" />
+    <Content Include="Views\StationPlatforms\Delete.cshtml" />
+    <Content Include="Views\StationPlatforms\Details.cshtml" />
+    <Content Include="Views\StationPlatforms\Edit.cshtml" />
+    <Content Include="Views\StationPlatforms\Index.cshtml" />
+    <Content Include="Views\TrainTimeTables\Create.cshtml" />
+    <Content Include="Views\TrainTimeTables\Delete.cshtml" />
+    <Content Include="Views\TrainTimeTables\Details.cshtml" />
+    <Content Include="Views\TrainTimeTables\Edit.cshtml" />
+    <Content Include="Views\TrainTimeTables\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
