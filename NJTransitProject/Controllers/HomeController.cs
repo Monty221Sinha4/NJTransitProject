@@ -6,9 +6,11 @@ using System.Web.Mvc;
 
 namespace NJTransitProject.Controllers
 {
+    
     public class HomeController : Controller
     {
         // GET: Home
+        private NJData1 data1 = new NJData1();
         public ActionResult Home()
         {
             return View();
@@ -20,6 +22,11 @@ namespace NJTransitProject.Controllers
         public ActionResult Contact()
         {
             return View();
+        }
+        public ActionResult TimeTable()
+        {
+
+            return View(data1.TrainTimeTables.ToList());
         }
     }
 }

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<NJTransitProject.TrainTimeTable>
+
+@{
+    ViewBag.Title = "TimeTable";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>TimeTable</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SchuduleTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StationPlatform.Platform)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Station.Station)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchuduleTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StationPlatform.Platform)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Station.Station)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GenID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GenID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GenID })
+        </td>
+    </tr>
+}
+
+</table>
