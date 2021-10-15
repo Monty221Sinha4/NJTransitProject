@@ -260,6 +260,7 @@
     <Content Include="Views\TrainTimeTables\Details.cshtml" />
     <Content Include="Views\TrainTimeTables\Edit.cshtml" />
     <Content Include="Views\TrainTimeTables\Index.cshtml" />
+    <Content Include="Views\Home\TimeTable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
