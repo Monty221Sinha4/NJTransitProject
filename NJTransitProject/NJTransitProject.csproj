@@ -132,6 +132,7 @@
     <Content Include="Content\NewStyle.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\NJ 1.jpg" />
+    <Content Include="Images\nj 12.jpg" />
     <Content Include="Images\NJTransitLogo.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -261,6 +262,7 @@
     <Content Include="Views\TrainTimeTables\Edit.cshtml" />
     <Content Include="Views\TrainTimeTables\Index.cshtml" />
     <Content Include="Views\Home\TimeTable.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
